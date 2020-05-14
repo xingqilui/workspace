@@ -2,8 +2,12 @@ package main
 
 import "fmt"
 
-func main()  {
-	fmt.Println("Hello world!")
-	
+func sum(a int, b int) int {
+	return a + b
+}
+
+func main() {
+	fmt.Println(sum(1, 2))
+
 	return
 }
