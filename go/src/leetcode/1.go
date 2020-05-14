@@ -1,13 +1,6 @@
-package main
+package leetcode
 
-import "fmt"
-
-func sum(a int, b int) int {
+//Sum 求和
+func Sum(a int, b int) int {
 	return a + b
-}
-
-func main() {
-	fmt.Println(sum(1, 2))
-
-	return
 }
