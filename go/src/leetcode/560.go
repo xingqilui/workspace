@@ -20,3 +20,23 @@ func SubarraySum560(nums []int, k int) int {
 
 	return ret
 }
+
+//SubarraySum560_2 前缀和算法
+func SubarraySum560_2(nums []int, k int) int {
+	var ret, sum int
+	var m = map[int]int{0: 1}
+
+	for _, v := range nums {
+		sum += v
+
+		if _, ok := m[sum-k]; ok == true {
+			ret += m[sum-k]
+		}
+
+		m[sum]++
+	}
+
+	return ret
+}
+
+//[3,4,7,2,-3]

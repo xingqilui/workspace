@@ -73,5 +73,9 @@ func Test560(t *testing.T) {
 		if cap := SubarraySum560(v.nums, v.k); cap != v.exp {
 			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
 		}
+
+		if cap := SubarraySum560_2(v.nums, v.k); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
 	}
 }
