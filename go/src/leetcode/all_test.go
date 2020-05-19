@@ -1,15 +1,30 @@
 package leetcode
 
 import (
+	"reflect"
 	"testing"
 )
 
-func TestSum(t *testing.T) {
-	num1, num2, exp := 1, 2, 3
+func Test1(t *testing.T) {
+	for k, v := range []struct {
+		nums   []int
+		target int
+		exp    []int
+	}{
+		{[]int{2, 7, 11, 15}, 9, []int{0, 1}},
+		{[]int{0, 1, 2, 3, 4}, 7, []int{3, 4}},
+		{[]int{-1, -2, 0, 1, 2}, 0, []int{0, 3}},
+		{[]int{3, 2, 4}, 6, []int{1, 2}},
+		{[]int{3, 3}, 6, []int{0, 1}},
+	} {
+		if cap := TwoSum(v.nums, v.target); true != reflect.DeepEqual(cap, v.exp) {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
 
-	act := Sum(num1, num2)
-	if act != exp {
-		t.Errorf("Expected the sum of %d + %d to be %d but instead got %d!", num1, num2, exp, act)
+		if cap := TwoSum1(v.nums, v.target); true != reflect.DeepEqual(cap, v.exp) {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+
 	}
 }
 
