@@ -28,6 +28,24 @@ func Test1(t *testing.T) {
 	}
 }
 
+func Test7(t *testing.T) {
+	for k, v := range []struct {
+		num int
+		exp int
+	}{
+		{123, 321},
+		{-123, -321},
+		{1, 1},
+		{120, 21},
+		{-120, -21},
+		{-120, -21},
+	} {
+		if cap := Reverse(v.num); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
