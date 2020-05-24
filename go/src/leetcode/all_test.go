@@ -46,6 +46,23 @@ func Test7(t *testing.T) {
 	}
 }
 
+func Test9(t *testing.T) {
+	for k, v := range []struct {
+		num int
+		exp bool
+	}{
+		{121, true},
+		{-121, false},
+		{10, false},
+		{0, true},
+		{2147483647, false},
+		{-2147483648, false},
+	} {
+		if cap := IsPalindrome(v.num); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
+	}
+}
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
