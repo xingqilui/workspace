@@ -61,8 +61,33 @@ func Test9(t *testing.T) {
 		if cap := IsPalindrome(v.num); cap != v.exp {
 			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
 		}
+
+		if cap := IsPalindrome2(v.num); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
+
 	}
 }
+
+func Test13(t *testing.T) {
+	for k, v := range []struct {
+		rom string
+		exp int
+	}{
+		{"I", 1},
+		{"III", 3},
+		{"IV", 4},
+		{"IX", 9},
+		{"LVIII", 58},
+		{"MCMXCIV", 1994},
+		{"MMMCMXCIX", 3999},
+	} {
+		if cap := RomanToInt(v.rom); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
