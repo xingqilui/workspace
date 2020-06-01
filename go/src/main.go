@@ -8,11 +8,11 @@ import (
 func main() {
 	fmt.Println("Hello world!", tools.Sum(100, 200))
 
-	fmt.Println(123 % 10000)
+	var str1 = ""
+	var str2 = "abc"
+	str1 = str2[:1]
 
-	s := "hello"
+	fmt.Println(str1)
+	fmt.Println(len(str1))
 
-	for k, v := range s {
-		fmt.Printf("%d:%c\n", k, v)
-	}
 }

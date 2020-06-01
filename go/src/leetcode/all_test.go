@@ -61,11 +61,6 @@ func Test9(t *testing.T) {
 		if cap := IsPalindrome(v.num); cap != v.exp {
 			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
 		}
-
-		if cap := IsPalindrome2(v.num); cap != v.exp {
-			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
-		}
-
 	}
 }
 
@@ -84,6 +79,25 @@ func Test13(t *testing.T) {
 	} {
 		if cap := RomanToInt(v.rom); cap != v.exp {
 			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
+func Test14(t *testing.T) {
+	for k, v := range []struct {
+		input []string
+		exp   string
+	}{
+		{[]string{"flower", "flow", "flight"}, "fl"},
+		{[]string{"dog", "racecar", "car"}, ""},
+		{[]string{"abcd", "abab", "abab"}, "ab"},
+		{[]string{"ab", "ab", "ab"}, "ab"},
+		{[]string{"", "ab", "ab"}, ""},
+		{[]string{"ab", "", ""}, ""},
+		{[]string{}, ""},
+	} {
+		if cap := LongestCommonPrefix(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %s but instead got %s!", k, v.exp, cap)
 		}
 	}
 }
