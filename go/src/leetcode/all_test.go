@@ -122,7 +122,33 @@ func Test20(t *testing.T) {
 		if cap := IsValid(v.input); cap != v.exp {
 			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
 		}
+
+		if cap := IsValid2(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
 	}
+
+	for k, v := range []struct {
+		input string
+		exp   bool
+	}{
+		{"aaa", true},
+		{"(abc)", true},
+		{"abc[abc]abc(abc){abc}abc", true},
+		{"[(abc{abc})]", true},
+		{"{()abc[abc]}", true},
+		{"{abc{{abc}}}", true},
+		{"{{abc{[]abc()}abc}}", true},
+		{"(]", false},
+		{"([)]", false},
+		{"([)", false},
+		{"()]", false},
+	} {
+		if cap := IsValid3(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
+	}
+
 }
 
 func Test136(t *testing.T) {
