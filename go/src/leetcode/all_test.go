@@ -102,6 +102,29 @@ func Test14(t *testing.T) {
 	}
 }
 
+func Test20(t *testing.T) {
+	for k, v := range []struct {
+		input string
+		exp   bool
+	}{
+		{"", true},
+		{"()", true},
+		{"[](){}", true},
+		{"[({})]", true},
+		{"{()[]}", true},
+		{"{{{}}}", true},
+		{"{{{[]()}}}", true},
+		{"(]", false},
+		{"([)]", false},
+		{"([)", false},
+		{"()]", false},
+	} {
+		if cap := IsValid(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
