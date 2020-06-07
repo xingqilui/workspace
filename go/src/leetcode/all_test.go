@@ -3,6 +3,7 @@ package leetcode
 import (
 	"reflect"
 	"testing"
+	"tools"
 )
 
 func Test1(t *testing.T) {
@@ -151,6 +152,18 @@ func Test20(t *testing.T) {
 			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
 		}
 
+	}
+
+}
+
+func Test21(t *testing.T) {
+	for _, v := range []struct {
+		l1  ListNode
+		l2  ListNode
+		exp bool
+	}{} {
+		
+		MergeTwoLists(&v.l1, &v.l2)
 	}
 
 }

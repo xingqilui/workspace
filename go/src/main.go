@@ -5,47 +5,107 @@ import (
 	"tools"
 )
 
+//Person ...
+type Person struct {
+	name string
+	age  int
+}
+
+//Student ...
+type Student struct {
+	Person
+	id int
+}
+
+//Hello ...
+func (person *Person) Hello() {
+	fmt.Printf("Hello, My name is %s, I`m %d years old.\n", person.name, person.age)
+}
+
+//Growup ...
+func (person *Person) Growup() {
+	person.age++
+}
+
+//Say ...
+func (student *Student) Say() {
+	fmt.Printf("My Id is %d.\n", student.id)
+}
+
+//ListNode ...
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func main() {
 	fmt.Println("Hello world!", tools.Sum(100, 200))
 
-	var str1 = ""
-	var str2 = "abc"
-	str1 = str2[:1]
+	var chenlei = Person{"chenlei", 30}
 
-	fmt.Println(str1)
-	fmt.Println(len(str1))
+	fmt.Println(chenlei)
+	chenlei.Hello()
+	chenlei.Growup()
+	chenlei.Growup()
+	chenlei.Growup()
+	chenlei.Hello()
 
-	var a byte
-	fmt.Println(a)
+	var liuyueshu = Student{Person{"Liuyueshu", 30}, 10010}
+	liuyueshu.Hello()
+	liuyueshu.Say()
 
-	var stack = []byte{'a', 'b'}
+	var list = new(ListNode)
 
-	//栈的常规操作：入栈、出栈、取栈顶
-	empty := func(stack *[]byte) bool {
-		return 0 == len(*stack)
+	var item1 = new(ListNode)
+	item1.Val = 100
+	item1.Next = nil
+
+	var item2 = new(ListNode)
+	item2.Val = 200
+	item2.Next = nil
+
+	listAdd := func(list *ListNode, item *ListNode) {
+		item.Next = list.Next
+		list.Next = item
 	}
 
-	// top := func(stack []byte) byte {
-	// 	if empty(stack) {
-	// 		return 0
-	// 	}
-
-	// 	return stack[len(stack)-1]
-	// }
-
-	push := func(stack *[]byte, item byte) {
-		*stack = append(*stack, item)
+	listDelHead := func(list *ListNode) {
+		list.Next = list.Next.Next
 	}
 
-	// pop := func(stack []byte) {
-	// 	if empty(stack) {
-	// 		return
-	// 	}
+	listReverse := func(list *ListNode) {
+		var listRet = new(ListNode)
 
-	// 	stack = stack[:len(stack)-1]
-	// }
+		for list.Next != nil {
+			item := list.Next
+			listDelHead(list)
+			listAdd(listRet, item)
+		}
 
-	push(&stack, 'a')
-	fmt.Println(stack)
-	fmt.Println(empty(&stack))
+		list.Next = listRet.Next
+	}
+
+	listShow := func(list *ListNode) {
+		fmt.Printf("List show start at %p\n", list)
+
+		for item := list.Next; item != nil; item = item.Next {
+			fmt.Printf("Addr=%p, val=%d\n", item, item.Val)
+		}
+
+		fmt.Println("List show end.")
+	}
+
+	listAdd(list, item1)
+	listAdd(list, item2)
+	listShow(list)
+
+	listReverse(list)
+	listShow(list)
+
+	var slist = new(tools.SList)
+	slist.SListInit([]int{1, 2, 3, 4, 5})
+	slist.SLinkShow()
+	slist.SLinkReverse()
+	slist.SLinkShow()
+
 }
