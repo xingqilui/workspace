@@ -80,3 +80,55 @@ func IsValid3(s string) bool {
 
 	return (0 == len(stack))
 }
+
+//IsValid4 使用匿名函数实现栈的操作集合
+func IsValid4(s string) bool {
+	var left = map[byte]byte{'(': ')', '[': ']', '{': '}'}
+	var right = map[byte]byte{')': '(', ']': '[', '}': '{'}
+	var stack = make([]byte, 0)
+
+	//栈的常规操作：入栈、出栈、取栈顶
+	empty := func(stack *[]byte) bool {
+		return 0 == len(*stack)
+	}
+
+	top := func(stack *[]byte) byte {
+		if empty(stack) {
+			return 0
+		}
+
+		return (*stack)[len(*stack)-1]
+	}
+
+	push := func(stack *[]byte, item byte) {
+		*stack = append(*stack, item)
+	}
+
+	pop := func(stack *[]byte) {
+		if empty(stack) {
+			return
+		}
+
+		*stack = (*stack)[:len(*stack)-1]
+	}
+
+	for i := range s {
+		if _, ok := left[s[i]]; true == ok {
+			push(&stack, s[i])
+		} else if _, ok := right[s[i]]; true == ok {
+			if empty(&stack) {
+				return false
+			}
+
+			if left[top(&stack)] == s[i] {
+				pop(&stack)
+			} else {
+				return false
+			}
+		} else {
+			continue
+		}
+	}
+
+	return (0 == len(stack))
+}

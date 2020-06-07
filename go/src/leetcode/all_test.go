@@ -147,6 +147,10 @@ func Test20(t *testing.T) {
 		if cap := IsValid3(v.input); cap != v.exp {
 			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
 		}
+		if cap := IsValid4(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %t but instead got %t!", k, v.exp, cap)
+		}
+
 	}
 
 }
