@@ -155,6 +155,25 @@ func Test20(t *testing.T) {
 
 }
 
+func Test26(t *testing.T) {
+	for k, v := range []struct {
+		input []int
+		exp   int
+	}{
+		{[]int{1, 1, 2}, 2},
+		{[]int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, 5},
+		{[]int{}, 0},
+		{[]int{1, 1, 1, 1, 1, 1, 1, 1}, 1},
+		{[]int{1, 1, 2}, 2},
+		{[]int{5, 5, 5, 4, 3, 3, 2, 1}, 5},
+		{[]int{-1, 0, 1}, 3},
+	} {
+		if cap := RemoveDuplicates(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int

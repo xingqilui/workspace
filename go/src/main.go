@@ -119,4 +119,14 @@ func main() {
 	// slist.SLinkReverse()
 	// slist.SLinkShow()
 
+	fmt.Println("-----26-----")
+
+	arrayModify := func(nums []int) {
+		nums[0] = 100
+	}
+
+	arrayNums := []int{1, 2, 3}
+	arrayModify(arrayNums)
+	fmt.Println(arrayNums[0])
+
 }
