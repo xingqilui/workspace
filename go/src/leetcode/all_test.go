@@ -174,6 +174,26 @@ func Test26(t *testing.T) {
 	}
 }
 
+func Test27(t *testing.T) {
+	for k, v := range []struct {
+		input  []int
+		input2 int
+		exp    int
+	}{
+		{[]int{3, 2, 2, 3}, 3, 2},
+		{[]int{0, 1, 2, 2, 3, 0, 4, 2}, 2, 5},
+		{[]int{}, 1, 0},
+		{[]int{1, 1, 1, 1, 1, 1, 1, 1}, 1, 0},
+		{[]int{1, 1, 1, 1, 1, 1, 1, 1}, 2, 8},
+		{[]int{1, 1, 1, 2, 3, 3, 4}, 1, 4},
+		{[]int{-1, 0, 1}, -1, 2},
+	} {
+		if cap := RemoveElement(v.input, v.input2); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
