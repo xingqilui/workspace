@@ -8,67 +8,30 @@ type ListNode struct {
 
 //MergeTwoLists ...
 func MergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-
-	// listAdd := func(list *ListNode, item *ListNode) {
-	// 	item.Next = list.Next
-	// 	list.Next = item
-	// }
-
-	// listDelHead := func(list *ListNode) {
-	// 	list.Next = list.Next.Next
-	// }
-
-	// listReverse := func(list *ListNode) {
-	// 	var listRet = new(ListNode)
-
-	// 	for list.Next != nil {
-	// 		item := list.Next
-	// 		listDelHead(list)
-	// 		listAdd(listRet, item)
-	// 	}
-
-	// 	list.Next = listRet.Next
-	// }
-
-	// listShow := func(list *ListNode) {
-	// 	fmt.Printf("List show start at %p\n", list)
-
-	// 	for item := list.Next; item != nil; item = item.Next {
-	// 		fmt.Printf("Addr=%p, val=%d\n", item, item.Val)
-	// 	}
-
-	// 	fmt.Println("List show end.")
-	// }
-
-	// listReverse(list)
-	// listShow(list)
-
-	list := new(ListNode)
-	item := list
-	item1 := l1
-	item2 := l2
+	listM := new(ListNode)
+	listScan := listM
+	list1 := l1
+	list2 := l2
 
 	for {
-		if item1.Next == nil {
-			list.Next = item2
+		if list1 == nil {
+			listScan.Next = list2
 			break
-		} else {
-			list.Next = item1
+		} else if list2 == nil {
+			listScan.Next = list1
 			break
 		}
 
-		if item1.Val <= item2.Val {
-			item = item1
-			item1 = item1.Next
+		if list1.Val <= list2.Val {
+			listScan.Next = list1
+			list1 = list1.Next
 		} else {
-			item = item2
-			item2 = item2.Next
+			listScan.Next = list2
+			list2 = list2.Next
 		}
 
-		l1.Next = item.Next
-		item.Next = list.Next
-		list.Next = item
+		listScan = listScan.Next
 	}
 
-	return list.Next
+	return listM.Next
 }

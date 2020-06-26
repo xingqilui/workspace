@@ -88,7 +88,7 @@ func main() {
 	listShow := func(list *ListNode) {
 		fmt.Printf("List show start at %p\n", list)
 
-		for item := list.Next; item != nil; item = item.Next {
+		for item := list; item != nil; item = item.Next {
 			fmt.Printf("Addr=%p, val=%d\n", item, item.Val)
 		}
 
@@ -102,10 +102,21 @@ func main() {
 	listReverse(list)
 	listShow(list)
 
-	var slist = new(tools.SList)
-	slist.SListInit([]int{1, 2, 3, 4, 5})
-	slist.SLinkShow()
-	slist.SLinkReverse()
-	slist.SLinkShow()
+	var list1 = new(tools.ListNode)
+	var list2 = new(tools.ListNode)
+
+	tools.ListInit(list1, []int{5, 4, 3, 2, 1})
+	tools.ListShow(list1)
+	tools.ListInit(list2, []int{10, 9, 8, 7, 6, 5, 4, 3})
+	tools.ListShow(list2)
+
+	listM := tools.MergeTwoLists(list1, list2)
+	tools.ListShow(listM)
+
+	// var slist = new(tools.SList)
+	// slist.SListInit([]int{1, 2, 3, 4, 5})
+	// slist.SLinkShow()
+	// slist.SLinkReverse()
+	// slist.SLinkShow()
 
 }
