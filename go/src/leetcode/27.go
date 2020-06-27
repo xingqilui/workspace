@@ -24,6 +24,7 @@ func RemoveElement(nums []int, val int) int {
 
 ## 解题思路1
 与26题解题思路一样，使用两个游标。
+
 ```go
 func RemoveElement(nums []int, val int) int {
 	var i, j int
@@ -41,7 +42,6 @@ func RemoveElement(nums []int, val int) int {
 
 	return j
 }
-
 ```
 
 ## 解题思路2
@@ -50,10 +50,9 @@ func RemoveElement(nums []int, val int) int {
 
 ```
 
-## 遇到的问题
-
-## 思考的问题
-
-
+## 知识点
+1. 数组作为函数入参，是传值还是传指针？
+	> * 数组作为函数参数是值传递，函数内改变不会改变实参的值
+	> * 切片作为函数参数是地址传递，函数内改变会改变实参的值
 
 */

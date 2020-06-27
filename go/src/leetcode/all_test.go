@@ -194,6 +194,32 @@ func Test27(t *testing.T) {
 	}
 }
 
+func Test28(t *testing.T) {
+	for k, v := range []struct {
+		input  string
+		input2 string
+		exp    int
+	}{
+		{"hello", "ll", 2},
+		{"aaaaa", "bba", -1},
+		{"aaaaa", "", 0},
+		{"aaaaa", "a", 0},
+		{"aaaaa", "aaa", 0},
+		{"", "bba", -1},
+		{"", "", 0},
+		{"abcde", "c", 2},
+		{"abcde", "abc", 0},
+		{"abcde", "cde", 2},
+		{"abcde", "def", -1},
+		{"a", "a", 0},
+		{"mississippi", "a", -1},
+	} {
+		if cap := StrStr(v.input, v.input2); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
