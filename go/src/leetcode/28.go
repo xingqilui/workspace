@@ -108,5 +108,5 @@ func StrStr(haystack string, needle string) int {
 1. go中对数组的判断，可以直接使用==号，数组的长度和成员完全一致，则返回true，否则返回false。
 2. go中对切片的判断，不能直接使用==号，需要自己循环遍历，或者使用DeepEqual方法。
 	> 官方的reflect包中有个DeepEqual方法，可以用来判断任意x和y是否相等。相同类型的两个值可能相等，不同类型的值永远不会相等。
-
+3. 搜索文本中的字串，使用KMP算法。
 */

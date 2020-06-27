@@ -220,6 +220,31 @@ func Test28(t *testing.T) {
 	}
 }
 
+func Test35(t *testing.T) {
+	for k, v := range []struct {
+		input  []int
+		input2 int
+		exp    int
+	}{
+		{[]int{1, 3, 5, 6}, 5, 2},
+		{[]int{1, 3, 5, 6}, 2, 1},
+		{[]int{1, 3, 5, 6}, 7, 4},
+		{[]int{1, 3, 5, 6}, 0, 0},
+		{[]int{1, 1, 1, 1}, 1, 0},
+		{[]int{1, 1, 1, 1}, 2, 4},
+		{[]int{}, 2, 0},
+		{[]int{1}, 0, 0},
+		{[]int{1}, 1, 0},
+		{[]int{1}, 2, 1},
+
+		{[]int{1}, 2, 1},
+	} {
+		if cap := searchInsert(v.input, v.input2); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
