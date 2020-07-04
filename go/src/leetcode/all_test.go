@@ -245,6 +245,25 @@ func Test35(t *testing.T) {
 	}
 }
 
+func Test53(t *testing.T) {
+	for k, v := range []struct {
+		input []int
+		exp   int
+	}{
+		{[]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, 6},
+		{[]int{}, 0},
+		{[]int{1}, 1},
+		{[]int{-1, 0, 1}, 1},
+		{[]int{1, 2, 3}, 6},
+		{[]int{10, -1, 0, 1, 10}, 20},
+		{[]int{-1}, -1},
+	} {
+		if cap := maxSubArray(v.input); cap != v.exp {
+			t.Errorf("Testcase %d: expected %d but instead got %d!", k, v.exp, cap)
+		}
+	}
+}
+
 func Test136(t *testing.T) {
 	for k, v := range []struct {
 		nums []int
